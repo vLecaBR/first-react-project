@@ -1,21 +1,31 @@
 import Colaborador from '../Colaborador';
 import './Time.css';
 
-const Time = (props) => {
+const Time = ({ nome, corPrimaria, corSecundaria, colaboradores, mudarCor, aoDeletar }) => {
     return (
-        // const css = {backgroundColor: props.corPrimaria} isso seria a mesma coisa que a linha a baixo mas eu colocaria style={css}
-        (props.colaboradores.length > 0) ? <section className="time" style={{ backgroundColor: props.corSecundaria }}>
-            <h3 style={{borderColor: props.corPrimaria}}>{props.nome}</h3>
+        (colaboradores.length > 0) ? 
+        <section className="time" style={{ backgroundColor: corSecundaria }}>
+            <input 
+                type='color' 
+                className='input-cor' 
+                value={corSecundaria} 
+                onChange={evento => mudarCor(evento.target.value, nome)} 
+            />
+            <h3 style={{ borderColor: corPrimaria }}>{nome}</h3>
             <div className='colaboradores'>
-            {props.colaboradores.map((colaborador, index) => {
-                console.log(<Colaborador corDeFundo={props.corPrimaria} key={colaborador.nome} nome={colaborador.nome} cargo={colaborador.cargo} imagem={colaborador.imagem } aoDeletar={() => {}} />)
-                return <Colaborador corDeFundo={props.corPrimaria} key={colaborador.nome} nome={colaborador.nome} cargo={colaborador.cargo} imagem={colaborador.imagem } aoDeletar={() => {}}/>
-            })}
+                {colaboradores.map((colaborador, index) => (
+                    <Colaborador 
+                        corDeFundo={corPrimaria} 
+                        key={colaborador.nome} 
+                        nome={colaborador.nome} 
+                        cargo={colaborador.cargo} 
+                        imagem={colaborador.imagem} 
+                        aoDeletar={aoDeletar} 
+                    />
+                ))}
             </div>
-            </section>
-            :''
-    )
-}
-
+        </section> : null
+    );
+};
 
 export default Time;
