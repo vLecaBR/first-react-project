@@ -33,7 +33,7 @@ Passo a passo para utilizar o repositório:
 
 1-Clonar o repositório no seu pc <br>
 2-Rodar o comando "npm install" para baixar o pacote <br>
-3-Rodar o "npm start"
+3-Rodar o "npm start" <br>
 4-Acessar o [Local host](http://localhost:3000)
 
 
